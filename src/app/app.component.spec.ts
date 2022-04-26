@@ -1,5 +1,6 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {provideMockStore} from "@ngrx/store/testing";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -7,6 +8,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [
+        provideMockStore()
+      ]
     }).compileComponents();
   });
 

@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {CurrenciesDto} from "../../app.interface";
+import {CurrenciesDto} from "./currency.interface";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CurrencyService {
   }
 
   getCurrencies(): Observable<CurrenciesDto> {
-    return this.httpClient.get<CurrenciesDto>('https://www.bankofcanada.ca/valet/groups/FX_RATES_DAILY');
+    return this.httpClient.get<CurrenciesDto>(`${environment.api}/groups/FX_RATES_DAILY`);
   }
 
   fromDto(dto: CurrenciesDto): string[] {

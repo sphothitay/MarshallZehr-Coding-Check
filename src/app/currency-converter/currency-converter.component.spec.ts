@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CurrencyConverterComponent } from './currency-converter.component';
+import {provideMockStore} from "@ngrx/store/testing";
 
 describe('CurrencyConverterComponent', () => {
   let component: CurrencyConverterComponent;
@@ -8,7 +9,10 @@ describe('CurrencyConverterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrencyConverterComponent ]
+      declarations: [ CurrencyConverterComponent ],
+      providers: [
+        provideMockStore()
+      ]
     })
     .compileComponents();
   });
