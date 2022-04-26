@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {select, Store} from "@ngrx/store";
+import * as fromStore from './store';
+import {Observable} from "rxjs";
 
 //https://www.bankofcanada.ca/valet/observations/FXAUDCAD,FXCNYCAD,FXEURCAD,FXJPYCAD,FXMXNCAD,FXNZDCAD,FXSEKCAD,FXCHFCAD,FXGBPCAD,FXUSDCAD/json?start_date=2017-01-03
 
@@ -8,5 +11,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MarshallZehr-Coding-Check';
+  loading$: Observable<boolean> = this.store.pipe(select(fromStore.getCurrencyLoading));
+
+  constructor(private store: Store) {
+    this.store.dispatch({type: fromStore.LOAD_CURRENCY});
+  }
 }
