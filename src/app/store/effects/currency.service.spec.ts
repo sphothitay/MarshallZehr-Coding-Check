@@ -59,6 +59,10 @@ describe('CurrencyService', () => {
 
   it('fromDto: should parse currencies into array of strings', () => {
     const result = service.fromDto(mockDto);
-    expect(result).toEqual(['AUD', 'BRL', 'CNY']);
+    expect(result).toEqual([
+      {model: 'FXAUDCAD', view: 'AUD'},
+      {model: 'FXBRLCAD', view: 'BRL'},
+      {model: 'FXCNYCAD', view: 'CNY'}
+    ]);
   });
 });

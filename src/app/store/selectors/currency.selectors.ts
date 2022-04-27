@@ -12,8 +12,3 @@ export const getCurrencyLoading = createSelector(
   getCurrencyFeature,
   (state: CurrencyState) => state.loading
 );
-
-export const getCurrencyLoaded =  createSelector(
-  getCurrencyFeature,
-  (state: CurrencyState) => state.loaded
-);

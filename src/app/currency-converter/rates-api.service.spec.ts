@@ -5,7 +5,7 @@ import {HttpClientTestingModule, HttpTestingController} from "@angular/common/ht
 import {RatesDto} from "./currency-converter.inteface";
 import {environment} from "../../environments/environment";
 
-describe('CurrencyConverterApiService', () => {
+describe('RatesApiService', () => {
   let service: RatesApiService;
   let httpController: HttpTestingController;
   let mockDto: RatesDto;
@@ -40,13 +40,13 @@ describe('CurrencyConverterApiService', () => {
 
   it('getCurrencies: should execute get API request', () => {
     const date = '2017-01-03';
-    service.loadRates(['AUD', 'EUR', 'USD'], date).subscribe(
+    service.loadRates(['FXAUDCAD', 'FXEURCAD', 'FXUSDCAD'], date).subscribe(
       {
         next: res => expect(res).toEqual(mockDto, 'should return expected results')
       }
     );
 
-    const expectationUrl = `${environment.api}/observations/AUD,EUR,USD/json?start_date=${date}&end_date=${date}`;
+    const expectationUrl = `${environment.api}/observations/FXAUDCAD,FXEURCAD,FXUSDCAD/json?start_date=${date}&end_date=${date}`;
     const req = httpController.expectOne(expectationUrl);
     expect(req.request.method).toEqual('GET');
 
@@ -57,9 +57,9 @@ describe('CurrencyConverterApiService', () => {
   it('fromDto: should convert to a dictionary of rates', () => {
     const result = service.fromDto(mockDto);
     expect(result).toEqual({
-      AUD: 0.9702,
-      EUR: 1.3973,
-      USD: 1.3435
+      FXAUDCAD: 0.9702,
+      FXEURCAD: 1.3973,
+      FXUSDCAD: 1.3435
     })
   });
 });

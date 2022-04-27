@@ -5,7 +5,7 @@ import {Observable, switchMap, tap} from "rxjs";
 import {RatesApiService} from "./rates-api.service";
 
 @Injectable()
-export class RatesStoreService extends ComponentStore<RatesState>{
+export class RatesStoreService extends ComponentStore<RatesState> {
   constructor(private apiService: RatesApiService) {
     super({
       loaded: false,
@@ -39,7 +39,7 @@ export class RatesStoreService extends ComponentStore<RatesState>{
     )
   );
 
-  readonly updateRates = this.updater((state, rates: Record<string, number>) => ({
+  private readonly updateRates = this.updater((state, rates: Record<string, number>) => ({
     loaded: true,
     loading: false,
     rates: {...rates}
