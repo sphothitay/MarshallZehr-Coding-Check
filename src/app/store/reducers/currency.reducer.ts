@@ -1,8 +1,9 @@
 import * as fromActions from '../actions/currency.actions';
-import {Action, ActionReducer, createReducer, on} from "@ngrx/store";
+import {ActionReducer, createReducer, on} from "@ngrx/store";
+import {Currency} from "../../app.interface";
 
 export interface CurrencyState {
-  list: string[];
+  list: Currency[];
   loading: boolean;
   loaded: boolean,
 }
@@ -22,7 +23,6 @@ export const currencyReducer: ActionReducer<CurrencyState> = createReducer(
   })),
 
   on(fromActions.loadCurrencyListSuccess, (state, {list}) => {
-    debugger
     return ({
       ...state,
       loading: false,

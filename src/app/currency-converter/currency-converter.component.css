@@ -1,0 +1,52 @@
+.converter {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.converter-item {
+  display: flex;
+  gap: 10px;
+}
+
+.form-element {
+  border-radius: 6px;
+  border: 1px solid #dadce0;
+  color: #70757a;
+  height: 36px;
+  padding: 0 6px 0 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Roboto, arial, sans-serif;
+}
+
+.form-element:focus {
+  outline: none;
+}
+
+.form-label {
+  height: 36px;
+  line-height: 36px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Roboto, arial, sans-serif;
+}
+.image-box {
+  display: block;
+  position: relative;
+}
+
+.image-box input[type="checkbox"] {
+  display: none;
+}
+
+.image-box img {
+  width: 36px;
+  height: 36px;
+  transform: rotate(0deg);
+}
+
+input[type="checkbox"]:checked + img {
+  transform: rotate(180deg);
+}
+

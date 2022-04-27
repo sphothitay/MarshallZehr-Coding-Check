@@ -11,7 +11,7 @@ export class RatesApiService {
   constructor(private httpClient: HttpClient) { }
 
   loadRates(currencies: string[], date: string): Observable<RatesDto> {
-    const url = `${environment.api}observations/${currencies.join(',')}/json`;
+    const url = `${environment.api}/observations/${currencies.join(',')}/json`;
     const params = {
       start_date: date,
       end_date: date
@@ -25,10 +25,7 @@ export class RatesApiService {
     const result: Record<string, number> = {};
 
     Object.keys(rest).forEach(observation => {
-      const to = observation.lastIndexOf('CAD');
-      const key = observation.substring(2, to);
-
-      result[key] = Number((rest[observation] as RateDto).v);
+      result[observation] = Number((rest[observation] as RateDto).v);
     });
 
     return result;

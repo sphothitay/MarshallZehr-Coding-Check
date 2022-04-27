@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'www.bankofcanada.ca/valet'
+  api: ' https://www.bankofcanada.ca/valet'
 };

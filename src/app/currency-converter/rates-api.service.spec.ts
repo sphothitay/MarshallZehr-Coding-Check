@@ -46,7 +46,7 @@ describe('CurrencyConverterApiService', () => {
       }
     );
 
-    const expectationUrl = `${environment.api}observations/AUD,EUR,USD/json?start_date=${date}&end_date=${date}`;
+    const expectationUrl = `${environment.api}/observations/AUD,EUR,USD/json?start_date=${date}&end_date=${date}`;
     const req = httpController.expectOne(expectationUrl);
     expect(req.request.method).toEqual('GET');
 

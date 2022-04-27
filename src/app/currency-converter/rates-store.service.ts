@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {ComponentStore} from "@ngrx/component-store";
+import {Injectable} from '@angular/core';
+import {ComponentStore, tapResponse} from "@ngrx/component-store";
 import {LoadRatesPayload, RatesDto, RatesState} from "./currency-converter.inteface";
-import {catchError, EMPTY, map, Observable, switchMap, tap} from "rxjs";
+import {Observable, switchMap, tap} from "rxjs";
 import {RatesApiService} from "./rates-api.service";
 
 @Injectable()
@@ -21,33 +21,27 @@ export class RatesStoreService extends ComponentStore<RatesState>{
     rates$.pipe(
       tap(
         {
-          next: () => this.updater((state) => ({
-            ...state,
+          next: () => this.patchState({
             loaded: false,
             loading: true
-          }))
+          })
         }
       ),
       switchMap(({currencies, date}) => this.apiService.loadRates(currencies, date).pipe(
-        tap(
-          {
-            next: (dto: RatesDto) => {
-              const rates = this.apiService.fromDto(dto);
-              return this.updater((state) => ({
-                ...state,
-                loaded: true,
-                loading: false,
-                rates: {...rates}
-              }))
-            },
-            error: () => this.updater((state) => ({
-              ...state,
-              loaded: false,
-              loading: false
-            }))
-          }
+        tapResponse(
+          (dto: RatesDto) => this.updateRates(this.apiService.fromDto(dto)),
+          () => this.patchState({
+            loaded: false,
+            loading: false
+          })
         )
       ))
     )
   );
+
+  readonly updateRates = this.updater((state, rates: Record<string, number>) => ({
+    loaded: true,
+    loading: false,
+    rates: {...rates}
+  }));
 }

@@ -1,3 +1,41 @@
-<select [(ngModel)]="selectedCurrency">
-  <option *ngFor="let item of currencies$ | async">{{item}}</option>
-</select>
+<div class="converter-item">
+  <label for="date" class="form-label">Date:</label>
+  <input
+    class="form-element"
+    type="date"
+    id="date"
+    [max]="maxDate"
+    [ngModel]="date"
+    (ngModelChange)="loadRates($event, currenciesModel)">
+</div>
+
+<h1 *ngIf="loading$ | async">
+  Loading Rates...
+</h1>
+
+<div class="converter" *ngIf="!(loading$ | async)">
+  <div class="converter-item">
+    <select [ngModel]="selectedCurrency" (ngModelChange)="setSelectedCurrency($event)" class="form-element">
+      <option *ngFor="let item of currencies" [value]="item.model">{{item.view}}</option>
+    </select>
+
+    <input type="number" [(ngModel)]="foreign" min="0" [disabled]="from" (ngModelChange)="convertRates()" class="form-element">
+  </div>
+
+  <div>
+    <label class="form-label image-box">
+      <input type="checkbox" [(ngModel)]="from">
+      <img src="assets/icons8-arrow-50.png">
+    </label>
+
+  </div>
+
+  <div class="converter-item">
+    <label class="form-element form-label">CAD</label>
+    <input type="number" [(ngModel)]="cad" min="0" [disabled]="!from" (ngModelChange)="convertRates()" class="form-element">
+  </div>
+</div>
+
+
+
+

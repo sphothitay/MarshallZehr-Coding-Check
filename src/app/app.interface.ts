@@ -1,6 +1,4 @@
-import {HttpErrorResponse} from "@angular/common/http";
-
-export interface CommonErrorResponse {
-  error: HttpErrorResponse
+export interface Currency {
+  view: string;
+  model: string;
 }
-

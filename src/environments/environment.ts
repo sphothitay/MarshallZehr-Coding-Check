@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'www.bankofcanada.ca/valet'
+  api: ' https://www.bankofcanada.ca/valet'
 };
 
 /*
