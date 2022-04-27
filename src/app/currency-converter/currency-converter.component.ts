@@ -36,7 +36,6 @@ export class CurrencyConverterComponent implements OnDestroy {
 
     this.ratesStore.rates$.subscribe({
       next: rates => {
-        debugger;
         this.rates = rates;
         this.convertRates();
       }
