@@ -91,7 +91,7 @@ export class CurrencyConverterComponent implements OnDestroy {
     const date = new Date();
     const utcHours = date.getUTCHours();
     // The daily average exchange rates are published once each business day by 16:30 ET
-    // UTC 22 is 5 mp EST.
+    // UTC 22 is 5 pm EST.
     // Before that time use yesterday as initial & the max date
     if (utcHours < 22) {
       date.setDate(date.getDate() - 1);
