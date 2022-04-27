@@ -25,14 +25,18 @@ export class CurrencyConverterComponent implements OnDestroy {
   rates: Record<string, number> = {};
 
   readonly loading$ = this.ratesStore.loading$;
+  get hasRates() {
+    return Object.keys(this.rates).length > 0;
+  }
 
   private readonly unsubscribe$: Subject<void> = new Subject();
 
   constructor(private store: Store, private ratesStore: RatesStoreService) {
     this.setMaxDate();
 
-    this.ratesStore.rates$.pipe(filter(rates => Object.keys(rates).length > 0)).subscribe({
+    this.ratesStore.rates$.subscribe({
       next: rates => {
+        debugger;
         this.rates = rates;
         this.convertRates();
       }

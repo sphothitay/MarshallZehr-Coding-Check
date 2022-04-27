@@ -21,6 +21,10 @@ export class RatesApiService {
   }
 
   fromDto(dto: RatesDto): Record<string, number> {
+    if (dto.observations.length === 0) {
+      return {};
+    }
+
     const {d, ...rest} = dto.observations[0];
     const result: Record<string, number> = {};
 

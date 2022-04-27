@@ -10,10 +10,14 @@
 </div>
 
 <h1 *ngIf="loading$ | async">
-  Loading Rates...
+  Loading rates...
 </h1>
 
-<div class="converter" *ngIf="!(loading$ | async)">
+<h1 *ngIf="!(loading$ | async) && !hasRates">
+  No rates available for the {{date}}
+</h1>
+
+<div class="converter" *ngIf="!(loading$ | async) && hasRates">
   <div class="converter-item">
     <select [ngModel]="selectedCurrency" (ngModelChange)="setSelectedCurrency($event)" class="form-element">
       <option *ngFor="let item of currencies" [value]="item.model">{{item.view}}</option>

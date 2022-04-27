@@ -62,4 +62,9 @@ describe('RatesApiService', () => {
       FXUSDCAD: 1.3435
     })
   });
+
+  it('fromDto: should return empty object if no observations', () => {
+    const result = service.fromDto({observations: []});
+    expect(result).toEqual({});
+  });
 });
