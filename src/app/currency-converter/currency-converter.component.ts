@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {select, Store} from "@ngrx/store";
-import {filter, Subject, takeUntil} from "rxjs";
+import {Subject, takeUntil} from "rxjs";
 import * as fromStore from "../store";
 import {RatesStoreService} from "./rates-store.service";
 import {Currency} from "../app.interface";
