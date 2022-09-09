@@ -22,6 +22,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Running Cypress tests
+
+Run `npm install` and start the project with `npm start`. Navigate to `http://localhost:4200/` and to check if the currency converter is  that the tests can run.
+Run `npm run cypress:open` to start the cypress test runner. From the list of E2E specs run the `currency-converter-tests.cy.js` spec.
+NOTE: There are a few currencies in the list of currencies that the thrid party API returns with no rates for recent fixture data (2022-09-07). This currently causes 6 tests to fail for the MYR, THB, and VND conversions. We may need to handle when no rates are returned differently to prompt the user when no rates are available for specific currencies.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
