@@ -26,7 +26,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 Run `npm install` and start the project with `npm start`. Navigate to `http://localhost:4200/` to check if the currency converter is working.
 
-Open another terminal and run `npm run cypress:open` to start the cypress dashboard. Select the E2E Testing type that is already configured. Then select one of the browsers (Chrome, Edge, and Electron) and click 'Start E2E Testing in [selected browser name here]'. This will open a new window and display Specs. From the list of specs run the `currency-converter-tests.cy.js` spec and the test cases should run.
+Open another terminal and run `npm run cypress:open` to start the cypress dashboard. Select the E2E Testing type that is already configured. Then select one of the browsers (Chrome, Edge, and Electron) and click 'Start E2E Testing in [selected browser name here]'. This will open a new window and display all the specs. From the list of specs run the `currency-converter-tests.cy.js` spec and the test cases should run.
 
 NOTE: There are a few currencies in the list of currencies that the thrid party API returns with no rates for recent fixture data (2022-09-07). This currently causes 6 tests to fail for the MYR, THB, and VND conversions. We may need to handle when no rates are returned differently to prompt the user when no rates are available for specific currencies.
 
